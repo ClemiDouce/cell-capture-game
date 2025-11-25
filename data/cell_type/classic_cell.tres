@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CellType" load_steps=2 format=3 uid="uid://lt2ee88dhv2b"]
+
+[ext_resource type="Script" uid="uid://df7ph7v6reuxt" path="res://data/cell_type/cell_type.gd" id="1_76prd"]
+
+[resource]
+script = ExtResource("1_76prd")
+generation_bonus = 1
+strength_bonus = 1
+metadata/_custom_type_script = "uid://df7ph7v6reuxt"

@@ -1,12 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://c63y7n8w5c5nr"]
+[gd_scene load_steps=3 format=3 uid="uid://c63y7n8w5c5nr"]
 
+[ext_resource type="Script" uid="uid://c08s6hcsu5j0g" path="res://screen/game_screen/game_screen.gd" id="1_8gjw2"]
 [ext_resource type="PackedScene" uid="uid://hrfsowussn1h" path="res://content/cell/base_cell.tscn" id="1_ul44q"]
 
 [node name="GameScreen" type="Node2D"]
+script = ExtResource("1_8gjw2")
 
 [node name="BaseCell" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(208, 206)
-monitorable = false
-team = null
-unit_generation = null
-generation_delay = 0.5
+position = Vector2(143, 135)
+team = 0
+
+[node name="BaseCell2" parent="." instance=ExtResource("1_ul44q")]
+position = Vector2(581, 135)
+team = 0
+
+[node name="BaseCell4" parent="." instance=ExtResource("1_ul44q")]
+position = Vector2(366, 522)
+
+[node name="BaseCell5" parent="." instance=ExtResource("1_ul44q")]
+position = Vector2(800, 522)
+
+[node name="BaseCell3" parent="." instance=ExtResource("1_ul44q")]
+position = Vector2(1002, 135)
+team = 1

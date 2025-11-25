@@ -1,8 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://hrfsowussn1h"]
+[gd_scene load_steps=8 format=3 uid="uid://hrfsowussn1h"]
 
 [ext_resource type="Texture2D" uid="uid://dp12r6syetwd7" path="res://icon.svg" id="1_blyj4"]
 [ext_resource type="Script" uid="uid://dceh51bcnw38h" path="res://content/cell/base_cell.gd" id="1_i4wf0"]
 [ext_resource type="FontFile" uid="uid://b35vo7gmv46pk" path="res://assets/font/Pixel_Promise_Monospaced.ttf" id="2_143sp"]
+[ext_resource type="Shader" uid="uid://drok62ilaxq48" path="res://assets/shaders/outline_shader.gdshader" id="2_m6jp3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4qp5"]
+resource_local_to_scene = true
+shader = ExtResource("2_m6jp3")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_op0rk"]
 size = Vector2(116, 114)
@@ -12,13 +22,22 @@ font = ExtResource("2_143sp")
 font_size = 28
 
 [node name="BaseCell" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_i4wf0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CellSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("1_blyj4")
 
+[node name="Outline" type="Sprite2D" parent="CellSprite"]
+unique_name_in_owner = true
+show_behind_parent = true
+material = SubResource("ShaderMaterial_g4qp5")
+texture = ExtResource("1_blyj4")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_op0rk")
 
 [node name="UnitCountLabel" type="Label" parent="."]
@@ -28,7 +47,6 @@ offset_left = -56.0
 offset_top = -111.0
 offset_right = 56.0
 offset_bottom = -64.0
-text = "0
-"
+text = "0"
 label_settings = SubResource("LabelSettings_i4wf0")
 horizontal_alignment = 1

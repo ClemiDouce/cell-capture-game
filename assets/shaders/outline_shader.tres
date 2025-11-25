@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c20of8ktqtn3f"]
+
+[ext_resource type="Shader" uid="uid://drok62ilaxq48" path="res://assets/shaders/outline_shader.gdshader" id="1_y4wy1"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_y4wy1")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 4.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
