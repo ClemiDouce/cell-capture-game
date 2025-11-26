@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://hrfsowussn1h"]
 
-[ext_resource type="Texture2D" uid="uid://dp12r6syetwd7" path="res://icon.svg" id="1_blyj4"]
 [ext_resource type="Script" uid="uid://dceh51bcnw38h" path="res://content/cell/base_cell.gd" id="1_i4wf0"]
 [ext_resource type="FontFile" uid="uid://b35vo7gmv46pk" path="res://assets/font/Pixel_Promise_Monospaced.ttf" id="2_143sp"]
+[ext_resource type="Texture2D" uid="uid://2xexlganm6fl" path="res://assets/planets/big_planets.png" id="2_g4qp5"]
 [ext_resource type="Shader" uid="uid://drok62ilaxq48" path="res://assets/shaders/outline_shader.gdshader" id="2_m6jp3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4qp5"]
@@ -14,8 +14,8 @@ shader_parameter/pattern = 2
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_op0rk"]
-size = Vector2(116, 114)
+[sub_resource type="CircleShape2D" id="CircleShape2D_m6jp3"]
+radius = 64.070274
 
 [sub_resource type="LabelSettings" id="LabelSettings_i4wf0"]
 font = ExtResource("2_143sp")
@@ -25,28 +25,37 @@ font_size = 28
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_i4wf0")
+generation_delay = 0.8
 
 [node name="CellSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("1_blyj4")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_g4qp5")
+hframes = 4
+vframes = 3
+region_rect = Rect2(0, 0, 64, 64)
 
 [node name="Outline" type="Sprite2D" parent="CellSprite"]
 unique_name_in_owner = true
 show_behind_parent = true
 material = SubResource("ShaderMaterial_g4qp5")
-texture = ExtResource("1_blyj4")
+texture = ExtResource("2_g4qp5")
+hframes = 4
+vframes = 3
+region_rect = Rect2(0, 0, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("RectangleShape2D_op0rk")
+shape = SubResource("CircleShape2D_m6jp3")
 
 [node name="UnitCountLabel" type="Label" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 offset_left = -56.0
-offset_top = -111.0
+offset_top = -130.0
 offset_right = 56.0
-offset_bottom = -64.0
+offset_bottom = -83.0
 text = "0"
 label_settings = SubResource("LabelSettings_i4wf0")
 horizontal_alignment = 1

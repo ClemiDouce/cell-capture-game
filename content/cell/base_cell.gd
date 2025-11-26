@@ -21,6 +21,11 @@ var selected := false:
 var unit_count := 0:
 	set = set_unit_count
 
+var team_frame : Dictionary = {
+	Enums.Team.ALLY: [0, 6],
+	Enums.Team.HOSTILE: [2,5],
+	Enums.Team.NEUTRAL: [1, 3, 4, 7]
+}
 
 func _ready() -> void:
 	set_team_color()
@@ -58,15 +63,7 @@ func set_team(new_team: Enums.Team):
 	
 
 func set_team_color():
-	var new_color: Color
-	match(team):
-		Enums.Team.ALLY:
-			new_color = Color.GREEN
-		Enums.Team.HOSTILE:
-			new_color = Color.RED
-		Enums.Team.NEUTRAL:
-			new_color = Color.WHITE
-	cell_sprite.self_modulate = new_color
+	cell_sprite.frame = team_frame[team].pick_random()
 
 func set_selected(value: bool):
 	selected = value

@@ -1,25 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://c63y7n8w5c5nr"]
+[gd_scene load_steps=4 format=3 uid="uid://c63y7n8w5c5nr"]
 
 [ext_resource type="Script" uid="uid://c08s6hcsu5j0g" path="res://screen/game_screen/game_screen.gd" id="1_8gjw2"]
 [ext_resource type="PackedScene" uid="uid://hrfsowussn1h" path="res://content/cell/base_cell.tscn" id="1_ul44q"]
+[ext_resource type="Texture2D" uid="uid://b1lh6ip5h3ri6" path="res://assets/background/SpaceWallpaper1920x672.png" id="2_6cdt5"]
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_8gjw2")
 
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(955, 310)
+texture = ExtResource("2_6cdt5")
+
 [node name="BaseCell" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(143, 135)
+position = Vector2(108, 171)
 team = 0
 
 [node name="BaseCell2" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(581, 135)
+position = Vector2(573, 153)
 team = 0
 
 [node name="BaseCell4" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(366, 522)
+position = Vector2(360, 484)
 
 [node name="BaseCell5" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(800, 522)
+position = Vector2(778, 492)
 
 [node name="BaseCell3" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(1002, 135)
+position = Vector2(1025, 194)
 team = 1
