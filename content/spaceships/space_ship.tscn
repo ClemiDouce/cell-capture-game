@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bphm3wyo54ao7"]
+
+[ext_resource type="Script" uid="uid://ckjwuclu4wdw8" path="res://content/spaceships/space_ship.gd" id="1_kesne"]
+[ext_resource type="Texture2D" uid="uid://da8rxcfkip0kl" path="res://assets/art/ships/ship_0004.png" id="2_kesne"]
+[ext_resource type="Script" uid="uid://ie3tbml6fghh" path="res://content/component/sine_component.gd" id="3_hfwed"]
+
+[node name="SpaceShip" type="Node2D"]
+script = ExtResource("1_kesne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_kesne")
+
+[node name="SineComponent" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("3_hfwed")
+target = NodePath("../Sprite2D")
+frequency = 1.5
+amplitude = 10.0

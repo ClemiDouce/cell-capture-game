@@ -21,10 +21,10 @@ func _physics_process(_delta: float) -> void:
 	var collision = space_state.intersect_point(point_param, 6)
 	if Input.is_action_just_released("left_click"):
 		if last_target:
-			var fleet_value := 0
 			for ally : BaseCell in selected_ally_cell:
-				fleet_value += ally.pop_half_unit()
-			last_target.apply_attack(Enums.Team.ALLY, fleet_value) 
+				#fleet_value += ally.pop_half_unit()
+				ally.launch_ships_to(last_target)
+			#last_target.apply_attack(Enums.Team.ALLY, fleet_value) 
 			last_target.selected = false
 
 		
@@ -54,4 +54,9 @@ func _physics_process(_delta: float) -> void:
 func _draw() -> void:
 	if last_target and !selected_ally_cell.is_empty():
 		for cell: BaseCell in selected_ally_cell:
-			draw_line(cell.global_position, get_global_mouse_position(), Color.WHITE_SMOKE, 2)
+			var angle = cell.global_position.direction_to(last_target.global_position)
+			var start_line = cell.global_position + (angle * 80)
+			var end_line = last_target.global_position - (angle * 80)
+			draw_line(start_line, end_line, Color.WHITE_SMOKE, 5)
+	
+	

@@ -1,18 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://hrfsowussn1h"]
+[gd_scene load_steps=6 format=3 uid="uid://hrfsowussn1h"]
 
 [ext_resource type="Script" uid="uid://dceh51bcnw38h" path="res://content/cell/base_cell.gd" id="1_i4wf0"]
 [ext_resource type="FontFile" uid="uid://b35vo7gmv46pk" path="res://assets/font/Pixel_Promise_Monospaced.ttf" id="2_143sp"]
-[ext_resource type="Texture2D" uid="uid://2xexlganm6fl" path="res://assets/planets/big_planets.png" id="2_g4qp5"]
-[ext_resource type="Shader" uid="uid://drok62ilaxq48" path="res://assets/shaders/outline_shader.gdshader" id="2_m6jp3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4qp5"]
-resource_local_to_scene = true
-shader = ExtResource("2_m6jp3")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 0.0
-shader_parameter/pattern = 2
-shader_parameter/inside = false
-shader_parameter/add_margins = true
+[ext_resource type="Texture2D" uid="uid://2xexlganm6fl" path="res://assets/art/planets/big_planets.png" id="2_g4qp5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6jp3"]
 radius = 64.070274
@@ -25,7 +15,7 @@ font_size = 28
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_i4wf0")
-generation_delay = 0.8
+generation_delay = 1.0
 
 [node name="CellSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -34,15 +24,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_g4qp5")
 hframes = 4
 vframes = 3
-region_rect = Rect2(0, 0, 64, 64)
-
-[node name="Outline" type="Sprite2D" parent="CellSprite"]
-unique_name_in_owner = true
-show_behind_parent = true
-material = SubResource("ShaderMaterial_g4qp5")
-texture = ExtResource("2_g4qp5")
-hframes = 4
-vframes = 3
+frame = 4
 region_rect = Rect2(0, 0, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

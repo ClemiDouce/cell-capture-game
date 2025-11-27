@@ -2,30 +2,45 @@
 
 [ext_resource type="Script" uid="uid://c08s6hcsu5j0g" path="res://screen/game_screen/game_screen.gd" id="1_8gjw2"]
 [ext_resource type="PackedScene" uid="uid://hrfsowussn1h" path="res://content/cell/base_cell.tscn" id="1_ul44q"]
-[ext_resource type="Texture2D" uid="uid://b1lh6ip5h3ri6" path="res://assets/background/SpaceWallpaper1920x672.png" id="2_6cdt5"]
+[ext_resource type="Texture2D" uid="uid://bv1aqad8y8iex" path="res://assets/art/background/Starfield_02-1024x1024.png" id="2_6cdt5"]
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_8gjw2")
+metadata/_edit_horizontal_guides_ = [540.0]
+metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -1
 texture_filter = 1
-position = Vector2(955, 310)
+scale = Vector2(1.8750001, 1.8750001)
 texture = ExtResource("2_6cdt5")
+centered = false
+metadata/_edit_lock_ = true
 
 [node name="BaseCell" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(108, 171)
-team = 0
+position = Vector2(742, 962)
+
+[node name="BaseCell7" parent="." instance=ExtResource("1_ul44q")]
+position = Vector2(110, 616)
+
+[node name="BaseCell8" parent="." instance=ExtResource("1_ul44q")]
+position = Vector2(373, 209)
+
+[node name="BaseCell6" parent="." instance=ExtResource("1_ul44q")]
+position = Vector2(1097, 222)
 
 [node name="BaseCell2" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(573, 153)
-team = 0
+position = Vector2(1149, 721)
+initial_unit_count = 50
+team = 1
 
 [node name="BaseCell4" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(360, 484)
+position = Vector2(741, 337)
+initial_unit_count = 50
+team = 0
 
 [node name="BaseCell5" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(778, 492)
+position = Vector2(1779, 660)
 
 [node name="BaseCell3" parent="." instance=ExtResource("1_ul44q")]
-position = Vector2(1025, 194)
-team = 1
+position = Vector2(1451, 914)

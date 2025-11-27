@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvxeobvnj5c3f"]
+
+[ext_resource type="Texture2D" uid="uid://dg1spa7dhjkv5" path="res://assets/art/effects/explosions/explosion-1-b-1.png" id="1_ex77i"]
+[ext_resource type="Script" uid="uid://ctnddcm7usdej" path="res://content/effects/planet_explosions/explosion_effect.gd" id="1_njj3d"]
+[ext_resource type="Texture2D" uid="uid://bneme3old1u2p" path="res://assets/art/effects/explosions/explosion-1-b-2.png" id="2_njj3d"]
+[ext_resource type="Texture2D" uid="uid://byc0aykc46ufb" path="res://assets/art/effects/explosions/explosion-1-b-3.png" id="3_gphtg"]
+[ext_resource type="Texture2D" uid="uid://bbyojfegwcsn6" path="res://assets/art/effects/explosions/explosion-1-b-4.png" id="4_a1f76"]
+[ext_resource type="Texture2D" uid="uid://b0qi7jcngyh8t" path="res://assets/art/effects/explosions/explosion-1-b-5.png" id="5_sggtk"]
+[ext_resource type="Texture2D" uid="uid://cln0tbr32sp61" path="res://assets/art/effects/explosions/explosion-1-b-6.png" id="6_f5cwv"]
+[ext_resource type="Texture2D" uid="uid://4xthhjtno6lb" path="res://assets/art/effects/explosions/explosion-1-b-7.png" id="7_hb4m6"]
+[ext_resource type="Texture2D" uid="uid://glblfd6r2nxl" path="res://assets/art/effects/explosions/explosion-1-b-8.png" id="8_h4nab"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wgrlo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ex77i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_njj3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gphtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a1f76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sggtk")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_f5cwv")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_hb4m6")
+}, {
+"duration": 1.5,
+"texture": ExtResource("8_h4nab")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ExplosionEffect" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_njj3d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_wgrlo")
+autoplay = "default"
+frame_progress = 0.14773224
+offset = Vector2(0, -32)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="queue_free"]
