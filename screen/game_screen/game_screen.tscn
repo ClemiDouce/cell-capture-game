@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c63y7n8w5c5nr"]
+[gd_scene load_steps=7 format=3 uid="uid://c63y7n8w5c5nr"]
 
 [ext_resource type="Script" uid="uid://c08s6hcsu5j0g" path="res://screen/game_screen/game_screen.gd" id="1_8gjw2"]
 [ext_resource type="PackedScene" uid="uid://hrfsowussn1h" path="res://content/cell/base_cell.tscn" id="1_ul44q"]
 [ext_resource type="Texture2D" uid="uid://bv1aqad8y8iex" path="res://assets/art/background/Starfield_02-1024x1024.png" id="2_6cdt5"]
+[ext_resource type="Resource" uid="uid://dlqncuk3kekwn" path="res://data/cell_type/strength_cell.tres" id="4_nwk7e"]
+[ext_resource type="Resource" uid="uid://bw1oo8mdy7ora" path="res://data/cell_type/factory_cell.tres" id="4_urxse"]
+[ext_resource type="Resource" uid="uid://bycevfg2ro00q" path="res://data/cell_type/speed_cell.tres" id="5_03bka"]
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_8gjw2")
@@ -19,15 +22,19 @@ metadata/_edit_lock_ = true
 
 [node name="BaseCell" parent="." instance=ExtResource("1_ul44q")]
 position = Vector2(742, 962)
+cell_type = ExtResource("4_nwk7e")
 
 [node name="BaseCell7" parent="." instance=ExtResource("1_ul44q")]
 position = Vector2(110, 616)
+cell_type = ExtResource("5_03bka")
 
 [node name="BaseCell8" parent="." instance=ExtResource("1_ul44q")]
 position = Vector2(373, 209)
+cell_type = ExtResource("4_urxse")
 
 [node name="BaseCell6" parent="." instance=ExtResource("1_ul44q")]
 position = Vector2(1097, 222)
+cell_type = ExtResource("4_nwk7e")
 
 [node name="BaseCell2" parent="." instance=ExtResource("1_ul44q")]
 position = Vector2(1149, 721)
@@ -44,3 +51,4 @@ position = Vector2(1779, 660)
 
 [node name="BaseCell3" parent="." instance=ExtResource("1_ul44q")]
 position = Vector2(1451, 914)
+cell_type = ExtResource("4_urxse")

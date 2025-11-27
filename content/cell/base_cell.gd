@@ -1,8 +1,8 @@
-@tool
 class_name BaseCell extends Area2D
 
 @onready var unit_count_label: Label = %UnitCountLabel
 @onready var cell_sprite: Sprite2D = %CellSprite
+@onready var cell_type_icon: Sprite2D = %TypeIcon
 
 const SPACE_SHIP = preload("uid://bphm3wyo54ao7")
 const EXPLOSION_EFFECT = preload("uid://bvxeobvnj5c3f")
@@ -17,8 +17,8 @@ const EXPLOSION_EFFECT = preload("uid://bvxeobvnj5c3f")
 @export var generation_delay := 0.3
 @export var max_unit := 50
 @export var cell_type : CellType
+
 var generation_time := 0.
-var current_attack : AttackData
 
 var selected := false:
 	set = set_selected
@@ -35,6 +35,8 @@ var team_frame : Dictionary = {
 func _ready() -> void:
 	set_team_color()
 	unit_count = initial_unit_count
+	if cell_type:
+		setup_cell_type(cell_type)
 	
 func _process(delta: float) -> void:
 	if team == Enums.Team.NEUTRAL or unit_count >= max_unit:
@@ -42,6 +44,14 @@ func _process(delta: float) -> void:
 	
 	generate_unit(delta)
 
+func setup_cell_type(new_type: CellType):
+	if new_type.cell_texture:
+		cell_type_icon.texture = new_type.cell_texture
+		cell_type_icon.show()
+	else:
+		cell_type_icon.hide()
+	
+	generation_delay *= cell_type.production_speed_modifier
 
 func generate_unit(delta: float):
 	generation_time += delta
@@ -51,7 +61,7 @@ func generate_unit(delta: float):
 
 func apply_attack(_team: Enums.Team, value: int):
 	if _team == team:
-		unit_count += value
+		unit_count += 1
 	else:
 		damage_count += 1
 		if damage_count % explosion_limit == 0:
@@ -70,13 +80,14 @@ func launch_ships_to(target: BaseCell, pourcent: float = 50.):
 		self.global_position + (direction * radius_offset),
 		target.global_position - (direction * radius_offset),
 		target,
-		attack_value
+		attack_value,
+		cell_type.speed_modifier,
+		cell_type.attack_value
 	)
 	for i in attack_value:
 		var attack_ship = create_ship()
 		attack_ship.spawn_ship(attack_data)
 		await get_tree().create_timer(0.1).timeout
-	current_attack = attack_data
 	return attack_data
 
 # Setter / Getter

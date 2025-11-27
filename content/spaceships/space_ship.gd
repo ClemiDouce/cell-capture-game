@@ -6,6 +6,7 @@ var attack_data: AttackData
 var launched := false
 
 var speed: float = 120.
+var damage : int = 1
 var spawn_offset : float = 30.
 var attack_offset : Vector2
 
@@ -13,6 +14,8 @@ func spawn_ship(data: AttackData):
 	var direction = data.start_position.direction_to(data.end_position)
 	self.global_rotation = direction.angle()
 	attack_data = data
+	speed *= attack_data.speed_modifier
+	damage = attack_data.damage
 	attack_offset = Vector2(
 		randf_range(-spawn_offset, spawn_offset),
 		randf_range(-spawn_offset, spawn_offset)
@@ -42,4 +45,4 @@ func land_ship(target_pos: Vector2):
 	land_tween.tween_property(self, "global_position", target_pos + offset, 1)
 	land_tween.tween_property(self, "scale", Vector2.ZERO, 1)
 	await land_tween.finished
-	attack_data.target.apply_attack(Enums.Team.ALLY, 1)
+	attack_data.target.apply_attack(Enums.Team.ALLY, damage)

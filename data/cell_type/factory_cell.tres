@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="CellType" load_steps=2 format=3 uid="uid://bw1oo8mdy7ora"]
+[gd_resource type="Resource" script_class="CellType" load_steps=3 format=3 uid="uid://bw1oo8mdy7ora"]
 
 [ext_resource type="Script" uid="uid://df7ph7v6reuxt" path="res://data/cell_type/cell_type.gd" id="1_qlyqi"]
+[ext_resource type="Texture2D" uid="uid://b8smr8dykofe6" path="res://assets/art/icons/pop_grow.png" id="1_s7m18"]
 
 [resource]
 script = ExtResource("1_qlyqi")
-generation_bonus = 2
-strength_bonus = 1
+cell_texture = ExtResource("1_s7m18")
+production_speed_modifier = 0.5
+defense_modifier = 0.5
 metadata/_custom_type_script = "uid://df7ph7v6reuxt"

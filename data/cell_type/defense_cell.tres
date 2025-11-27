@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CellType" load_steps=3 format=3 uid="uid://43siqfo0qktl"]
+
+[ext_resource type="Script" uid="uid://df7ph7v6reuxt" path="res://data/cell_type/cell_type.gd" id="1_8xa0q"]
+[ext_resource type="Texture2D" uid="uid://cgulw6yebt40t" path="res://assets/art/icons/shield.png" id="1_xn050"]
+
+[resource]
+script = ExtResource("1_8xa0q")
+cell_texture = ExtResource("1_xn050")
+production_speed_modifier = 0.0
+speed_modifier = 0.9
+defense_modifier = 1.5
+metadata/_custom_type_script = "uid://df7ph7v6reuxt"
