@@ -1,62 +1,11 @@
-extends Node2D
+class_name GameScreen extends Node2D
 
-var selected_ally_cell : Array[BaseCell]
-var last_target : BaseCell
+@onready var cell_container: Node2D = %CellContainer
 
-var point_param : PhysicsPointQueryParameters2D
+var cell_list : Array[BaseCell]
 
 func _ready() -> void:
-	point_param = PhysicsPointQueryParameters2D.new()
-	point_param.collide_with_areas = true
-	point_param.collide_with_bodies = false
-	point_param.collision_mask = 4
-
-func _process(_delta: float) -> void:
-	queue_redraw()
-
-func _physics_process(_delta: float) -> void:
-	var released := false
-	var space_state = get_world_2d().direct_space_state
-	point_param.position = get_global_mouse_position()
-	var collision = space_state.intersect_point(point_param, 6)
-	if Input.is_action_just_released("left_click"):
-		if last_target:
-			for ally : BaseCell in selected_ally_cell:
-				#fleet_value += ally.pop_half_unit()
-				ally.launch_ships_to(last_target)
-			#last_target.apply_attack(Enums.Team.ALLY, fleet_value) 
-			last_target.selected = false
-
-		
-		for ally: BaseCell in selected_ally_cell:
-			ally.selected = false
-		selected_ally_cell.clear()
-		released = true
-	
-	if !released:
-		if Input.is_action_pressed("left_click"):
-			if collision:
-			
-				var first = collision[0]["collider"] as BaseCell
-				last_target = first
-				last_target.selected = true
-				if last_target in selected_ally_cell:
-					selected_ally_cell.erase(last_target)
-			else:
-				if last_target:
-					if last_target.team == Enums.Team.ALLY:
-						selected_ally_cell.append(last_target)
-						last_target.selected = true
-					else:
-						last_target.selected = false
-					last_target = null
-	
-func _draw() -> void:
-	if last_target and !selected_ally_cell.is_empty():
-		for cell: BaseCell in selected_ally_cell:
-			var angle = cell.global_position.direction_to(last_target.global_position)
-			var start_line = cell.global_position + (angle * 80)
-			var end_line = last_target.global_position - (angle * 80)
-			draw_line(start_line, end_line, Color.WHITE_SMOKE, 5)
-	
-	
+	Game.current_game_scene = self
+	for cell in cell_container.get_children():
+		if cell is BaseCell:
+			cell_list.append(cell)

@@ -1,6 +1,10 @@
 class_name SpaceShip extends Node2D
 
+@export var ally_texture: Texture2D
+@export var hostile_texture: Texture2D
+
 @onready var sine_component: SineComponent = $SineComponent
+@onready var ship_texture: Sprite2D = %ShipTexture
 
 var attack_data: AttackData
 var launched := false
@@ -11,6 +15,7 @@ var spawn_offset : float = 30.
 var attack_offset : Vector2
 
 func spawn_ship(data: AttackData):
+	ship_texture.texture = ally_texture if data.team == Enums.Team.ALLY else hostile_texture
 	var direction = data.start_position.direction_to(data.end_position)
 	self.global_rotation = direction.angle()
 	attack_data = data
@@ -45,4 +50,4 @@ func land_ship(target_pos: Vector2):
 	land_tween.tween_property(self, "global_position", target_pos + offset, 1)
 	land_tween.tween_property(self, "scale", Vector2.ZERO, 1)
 	await land_tween.finished
-	attack_data.target.apply_attack(Enums.Team.ALLY, damage)
+	attack_data.target.apply_attack(attack_data.team, damage)

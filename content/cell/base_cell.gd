@@ -72,11 +72,12 @@ func apply_attack(_team: Enums.Team, value: int):
 			unit_count = abs(unit_count)
 			set_team(_team)
 
-func launch_ships_to(target: BaseCell, pourcent: float = 50.):
+func get_attack_data(target: BaseCell, pourcent: float = 50.):
 	var direction = self.global_position.direction_to(target.global_position)
 	var radius_offset = 90
 	var attack_value = get_pourcent_of_unit(pourcent)
 	var attack_data = AttackData.new(
+		team,
 		self.global_position + (direction * radius_offset),
 		target.global_position - (direction * radius_offset),
 		target,
@@ -84,11 +85,13 @@ func launch_ships_to(target: BaseCell, pourcent: float = 50.):
 		cell_type.speed_modifier,
 		cell_type.attack_value
 	)
-	for i in attack_value:
-		var attack_ship = create_ship()
-		attack_ship.spawn_ship(attack_data)
-		await get_tree().create_timer(0.1).timeout
 	return attack_data
+
+func launch_ships(data: AttackData):
+	for i in data.attack_count:
+		var attack_ship = create_ship()
+		attack_ship.spawn_ship(data)
+		await get_tree().create_timer(0.1).timeout
 
 # Setter / Getter
 func set_unit_count(new_value: int):
