@@ -80,6 +80,7 @@ func get_attack_data(target: BaseCell, pourcent: float = 50.):
 		team,
 		self.global_position + (direction * radius_offset),
 		target.global_position - (direction * radius_offset),
+		self,
 		target,
 		attack_value,
 		cell_type.speed_modifier,

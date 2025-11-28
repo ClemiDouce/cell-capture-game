@@ -4,28 +4,60 @@ enum ActionState {PLAN, WAIT, REST}
 
 var attack_timer := Timer.new()
 
+func _connect_signals():
+	Game.ai_attack_launched.connect(react_to_ai_attack)
+	Game.player_attack_launched.connect(react_to_player_attack)
+	Game.planet_captured.connect(react_to_planet_captured)
+
 func _ready() -> void:
+	_connect_signals()
 	add_child(attack_timer)
-	attack_timer.timeout.connect(choose_random_target)
+	attack_timer.timeout.connect(pick_target)
 	attack_timer.start(5)
+
+func pick_target():
+	pass
 	
-func choose_random_target():
-	var hostile_cells = Game.current_game_scene.cell_list.filter(sort_hostile)
-	var ally_cells = Game.current_game_scene.cell_list.filter(sort_ally)
+func react_to_player_attack(data: AttackData):
+	pass
 	
-	
-	var target = hostile_cells.pick_random()
-	var ally = ally_cells.pick_random()
-	launch_attack(ally, target)
-	attack_timer.start(5)
+func react_to_ai_attack(ai: BaseAI, data: AttackData):
+	pass
+
+func react_to_planet_captured(cell: BaseCell):
+	pass
+
 
 func launch_attack(from_cell: BaseCell, to_cell: BaseCell):
 	var attack_data = from_cell.get_attack_data(to_cell)
 	from_cell.launch_ships(attack_data)
 	Game.ai_attack_launched.emit(self, attack_data)
 
-func sort_hostile(cell: BaseCell):
-	return cell.team != Enums.Team.HOSTILE
+
+## Utils
+func sort_player(cell: BaseCell):
+	return cell.team == Enums.Team.ALLY
 	
-func sort_ally(cell: BaseCell):
+func sort_hostile(cell: BaseCell):
 	return cell.team == Enums.Team.HOSTILE
+	
+func sort_neutral(cell: BaseCell):
+	return cell.team == Enums.Team.NEUTRAL
+
+func get_player_planets() -> Array[BaseCell]:
+	var planets = Game.current_game_scene.cell_list
+	return planets.filter(sort_player)
+
+func get_hostile_planet() -> Array[BaseCell]:
+	var planets = Game.current_game_scene.cell_list
+	return planets.filter(sort_hostile)
+	
+func get_neutral_planets() -> Array[BaseCell]:
+	var planets = Game.current_game_scene.cell_list
+	return planets.filter(sort_neutral)
+
+func sort_unit_count(planet_a: BaseCell, planet_b: BaseCell, ascending: bool = false):
+	if ascending:
+		return planet_a.unit_count < planet_b.unit_count
+	else:
+		return planet_a.unit_count > planet_b.unit_count

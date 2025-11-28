@@ -6,8 +6,8 @@
 [ext_resource type="Resource" uid="uid://dlqncuk3kekwn" path="res://data/cell_type/strength_cell.tres" id="4_nwk7e"]
 [ext_resource type="Resource" uid="uid://bw1oo8mdy7ora" path="res://data/cell_type/factory_cell.tres" id="4_urxse"]
 [ext_resource type="Resource" uid="uid://bycevfg2ro00q" path="res://data/cell_type/speed_cell.tres" id="5_03bka"]
-[ext_resource type="Script" uid="uid://0mgwygo0gqpl" path="res://content/ai/base_ia.gd" id="7_j56h3"]
 [ext_resource type="Script" uid="uid://bi2dngrd2avmw" path="res://content/ai/player/player_logic.gd" id="8_2nipe"]
+[ext_resource type="Script" uid="uid://nmuyr83dsmsx" path="res://content/ai/opponent/aggressiv_ai.gd" id="8_rk31o"]
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_8gjw2")
@@ -58,8 +58,9 @@ position = Vector2(1779, 660)
 position = Vector2(1451, 914)
 cell_type = ExtResource("4_urxse")
 
-[node name="BaseAI" type="Node2D" parent="."]
-script = ExtResource("7_j56h3")
-
 [node name="PlayerLogic" type="Node2D" parent="."]
 script = ExtResource("8_2nipe")
+
+[node name="AggressivAI" type="Node2D" parent="."]
+script = ExtResource("8_rk31o")
+metadata/_custom_type_script = "uid://nmuyr83dsmsx"
