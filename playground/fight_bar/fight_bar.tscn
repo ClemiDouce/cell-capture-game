@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://7jr2of6k3rwa"]
+
+[ext_resource type="Script" uid="uid://co5egj2dfmtxm" path="res://playground/fight_bar/fight_bar.gd" id="1_ucteg"]
+
+[sub_resource type="Curve" id="Curve_ucteg"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1.0077066), 0.0, 1.9788055, 0, 1, Vector2(1, 2.9865122), 1.9788055, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_count = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_hw8qs"]
+font_size = 32
+
+[node name="FightBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ucteg")
+damage_curve = SubResource("Curve_ucteg")
+metadata/_edit_horizontal_guides_ = [55.0]
+metadata/_edit_vertical_guides_ = [104.0, -102.0]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -102.0
+offset_right = 104.0
+offset_bottom = 18.0
+theme_override_constants/separation = 5
+
+[node name="LeftBar" type="ColorRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.47058824, 0.72156864, 1, 1)
+
+[node name="RightBar" type="ColorRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.7411765, 0.25490198, 0.26666668, 1)
+
+[node name="RightLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 64.0
+offset_top = 20.0
+offset_right = 104.0
+offset_bottom = 65.0
+text = "0"
+label_settings = SubResource("LabelSettings_hw8qs")
+horizontal_alignment = 2
+
+[node name="LeftLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -103.0
+offset_top = 19.0
+offset_right = -63.0
+offset_bottom = 64.0
+text = "0"
+label_settings = SubResource("LabelSettings_hw8qs")

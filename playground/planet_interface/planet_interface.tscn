@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3vku2bxsisui"]
+
+[ext_resource type="Texture2D" uid="uid://2xexlganm6fl" path="res://assets/art/planets/big_planets.png" id="1_1qj64"]
+[ext_resource type="Script" uid="uid://brunnhvl4xrji" path="res://playground/planet_interface/planet_interface.gd" id="1_a4uam"]
+[ext_resource type="PackedScene" uid="uid://7jr2of6k3rwa" path="res://playground/fight_bar/fight_bar.tscn" id="2_a4uam"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2ul0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3x5b"]
+bg_color = Color(0.7411765, 0.2509804, 0.26666668, 1)
+
+[node name="PlanetInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a4uam")
+
+[node name="CaptureMask" type="Sprite2D" parent="."]
+clip_children = 1
+texture_filter = 1
+position = Vector2(142.4, 125.4)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_1qj64")
+hframes = 4
+vframes = 3
+frame = 4
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="CaptureBar" type="ProgressBar" parent="CaptureMask"]
+unique_name_in_owner = true
+offset_left = -31.772728
+offset_top = -33.272728
+offset_right = 32.272728
+offset_bottom = 32.272728
+theme_override_styles/background = SubResource("StyleBoxEmpty_k2ul0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e3x5b")
+fill_mode = 3
+show_percentage = false
+
+[node name="CellSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(142.4, 125.4)
+scale = Vector2(2, 2)
+texture = ExtResource("1_1qj64")
+hframes = 4
+vframes = 3
+frame = 4
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="FightBar" parent="." instance=ExtResource("2_a4uam")]
+layout_mode = 1
+offset_left = 142.4
+offset_top = 199.4
+offset_right = 142.4
+offset_bottom = 199.4

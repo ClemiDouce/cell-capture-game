@@ -36,8 +36,9 @@ func launch_ship():
 	
 func _process(delta: float) -> void:
 	if launched:
-		self.global_position = self.global_position.move_toward(attack_data.end_position, delta * speed)
-		if self.global_position.is_equal_approx(attack_data.end_position):
+		self.global_position = self.global_position.move_toward(attack_data.target.global_position, delta * speed)
+		self.look_at(attack_data.target.global_position)
+		if self.global_position.distance_to(attack_data.target.global_position) <= 80:
 			launched = false
 			land_ship(attack_data.target.global_position)
 

@@ -37,6 +37,7 @@ folder_colors={
 "res://assets/": "blue",
 "res://content/": "green",
 "res://data/": "red",
+"res://playground/": "gray",
 "res://screen/": "pink"
 }
 
