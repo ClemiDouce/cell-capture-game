@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://con6ttvkxtjw5"]
+
+[ext_resource type="PackedScene" uid="uid://bq31t8fktf5o5" path="res://assets/3D/Meshes/Solarbuster_Playbase.glb" id="1_bxvu1"]
+[ext_resource type="PackedScene" uid="uid://cayo4bpncvh6w" path="res://assets/3D/Meshes/Solarbuster_Planet.glb" id="2_olxow"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5ai4"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0w1tc"]
+sky_material = SubResource("ProceduralSkyMaterial_p5ai4")
+
+[sub_resource type="Environment" id="Environment_cq4pp"]
+background_mode = 1
+sky = SubResource("Sky_0w1tc")
+tonemap_mode = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cq4pp")
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1325.189, 0)
+fov = 4.5
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2393193, 0)
+light_energy = 0.559
+shadow_enabled = true
+shadow_transmittance_bias = -0.515
+shadow_blur = 0.0
+omni_range = 260.942
+omni_attenuation = -0.542
+
+[node name="Solarbuster_Planet" parent="." instance=ExtResource("2_olxow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.166542, -2.1938086, -34.90336)
+
+[node name="Solarbuster_Planet2" parent="." instance=ExtResource("2_olxow")]
+transform = Transform3D(2.4792278, 0, 0, 0, 2.4792278, 0, 0, 0, 2.4792278, 0, -2.5770843, 0)
+
+[node name="Solarbuster_Planet3" parent="." instance=ExtResource("2_olxow")]
+transform = Transform3D(0.6942605, 0, 0, 0, 0.6942605, 0, 0, 0, 0.6942605, -24.629221, -2.420269, 6.5229363)
+
+[node name="Solarbuster_Playbase" parent="." instance=ExtResource("1_bxvu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.368005, -1.6967773, 17.5811)
