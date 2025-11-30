@@ -17,7 +17,7 @@ script = ExtResource("1_a4uam")
 [node name="CaptureMask" type="Sprite2D" parent="."]
 clip_children = 1
 texture_filter = 1
-position = Vector2(142.4, 125.4)
+position = Vector2(-0.5999985, -0.5999985)
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("1_1qj64")
 hframes = 4
@@ -36,20 +36,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_e3x5b")
 fill_mode = 3
 show_percentage = false
 
-[node name="CellSprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-texture_filter = 1
-position = Vector2(142.4, 125.4)
-scale = Vector2(2, 2)
-texture = ExtResource("1_1qj64")
-hframes = 4
-vframes = 3
-frame = 4
-region_rect = Rect2(0, 0, 64, 64)
-
 [node name="FightBar" parent="." instance=ExtResource("2_a4uam")]
 layout_mode = 1
-offset_left = 142.4
-offset_top = 199.4
-offset_right = 142.4
-offset_bottom = 199.4
+offset_left = -0.5999985
+offset_top = 73.399994
+offset_right = -0.5999985
+offset_bottom = 73.399994
