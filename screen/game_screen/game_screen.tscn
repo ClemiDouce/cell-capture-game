@@ -1,18 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://c63y7n8w5c5nr"]
+[gd_scene load_steps=13 format=3 uid="uid://c63y7n8w5c5nr"]
 
 [ext_resource type="Script" uid="uid://c08s6hcsu5j0g" path="res://screen/game_screen/game_screen.gd" id="1_8gjw2"]
-[ext_resource type="PackedScene" uid="uid://hrfsowussn1h" path="res://content/cell/base_cell.tscn" id="1_ul44q"]
+[ext_resource type="PackedScene" uid="uid://x33lho3e47ha" path="res://content/cell/base_cell.tscn" id="1_ul44q"]
 [ext_resource type="Texture2D" uid="uid://bv1aqad8y8iex" path="res://assets/art/background/Starfield_02-1024x1024.png" id="2_6cdt5"]
 [ext_resource type="Resource" uid="uid://dlqncuk3kekwn" path="res://data/cell_type/strength_cell.tres" id="4_nwk7e"]
 [ext_resource type="Resource" uid="uid://bw1oo8mdy7ora" path="res://data/cell_type/factory_cell.tres" id="4_urxse"]
 [ext_resource type="Resource" uid="uid://bycevfg2ro00q" path="res://data/cell_type/speed_cell.tres" id="5_03bka"]
 [ext_resource type="Script" uid="uid://bi2dngrd2avmw" path="res://content/ai/player/player_logic.gd" id="8_2nipe"]
 [ext_resource type="Script" uid="uid://nmuyr83dsmsx" path="res://content/ai/opponent/aggressiv_ai.gd" id="8_rk31o"]
+[ext_resource type="LabelSettings" uid="uid://ceowidd61f441" path="res://assets/font/label_settings/big_pixel.tres" id="9_rk31o"]
+[ext_resource type="FontFile" uid="uid://bv4ujlqmxncsa" path="res://assets/font/Extra_Thick.ttf" id="10_jtum3"]
+[ext_resource type="PackedScene" uid="uid://cdb3bqxrywc4q" path="res://content/ui/start_count/start_count.tscn" id="11_vjy8y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v4tbp"]
+font = ExtResource("10_jtum3")
+font_size = 64
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_8gjw2")
-metadata/_edit_horizontal_guides_ = [540.0]
-metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
@@ -64,3 +71,49 @@ script = ExtResource("8_2nipe")
 [node name="AggressivAI" type="Node2D" parent="."]
 script = ExtResource("8_rk31o")
 metadata/_custom_type_script = "uid://nmuyr83dsmsx"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InputStopper" type="Control" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndMessage" type="CenterContainer" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/EndMessage"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="UI/EndMessage/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Humanity is Doomed"
+label_settings = ExtResource("9_rk31o")
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="UI/EndMessage/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "You Loose"
+label_settings = ExtResource("9_rk31o")
+horizontal_alignment = 1
+
+[node name="RetryText" type="Label" parent="UI/EndMessage/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "press space to retry"
+label_settings = SubResource("LabelSettings_v4tbp")
+horizontal_alignment = 1
+
+[node name="StartCount" parent="UI" instance=ExtResource("11_vjy8y")]
+unique_name_in_owner = true
