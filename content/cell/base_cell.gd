@@ -20,6 +20,9 @@ const EXPLOSION_EFFECT = preload("uid://bvxeobvnj5c3f")
 
 var generation_time := 0.
 
+var hovered := false:
+	set = set_hovered
+
 var selected := false:
 	set = set_selected
 
@@ -107,6 +110,10 @@ func set_team(new_team: Enums.Team):
 func set_team_color():
 	cell_sprite.frame = team_frame[team].pick_random()
 
+func set_hovered(value: bool):
+	hovered = value
+	queue_redraw()
+
 func set_selected(value: bool):
 	selected = value
 	queue_redraw()
@@ -114,6 +121,8 @@ func set_selected(value: bool):
 func _draw() -> void:
 	if selected:
 		draw_circle(Vector2.ZERO, 80, Color.FLORAL_WHITE, false, 5)
+	elif hovered:
+		draw_circle(Vector2.ZERO, 80, Color(Color.FLORAL_WHITE, 0.5), false, 5)
 	
 	#if current_attack:
 		#draw_line(Vector2.ZERO, current_attack.end_position - self.position, Color.DARK_RED, 5)

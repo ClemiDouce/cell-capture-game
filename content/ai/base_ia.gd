@@ -3,17 +3,28 @@ class_name BaseAI extends Node2D
 enum ActionState {PLAN, WAIT, REST}
 
 var attack_timer := Timer.new()
+var playing := false
 
 func _connect_signals():
 	Game.ai_attack_launched.connect(react_to_ai_attack)
 	Game.player_attack_launched.connect(react_to_player_attack)
 	Game.planet_captured.connect(react_to_planet_captured)
+	Game.game_started.connect(start_playing)
+	Game.game_finished.connect(stop_playing.unbind(1))
+	attack_timer.timeout.connect(pick_target)
 
 func _ready() -> void:
 	_connect_signals()
 	add_child(attack_timer)
-	attack_timer.timeout.connect(pick_target)
+	
+
+func start_playing():
+	playing = true
 	attack_timer.start(5)
+	
+func stop_playing():
+	playing = false
+	attack_timer.stop()
 
 func pick_target():
 	pass

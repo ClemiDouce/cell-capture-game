@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://x33lho3e47ha"]
+[gd_scene load_steps=9 format=3 uid="uid://x33lho3e47ha"]
 
 [ext_resource type="Script" uid="uid://dceh51bcnw38h" path="res://content/cell/base_cell.gd" id="1_g4qp5"]
 [ext_resource type="FontFile" uid="uid://b35vo7gmv46pk" path="res://assets/font/Pixel_Promise_Monospaced.ttf" id="2_143sp"]
 [ext_resource type="Texture2D" uid="uid://2xexlganm6fl" path="res://assets/art/planets/big_planets.png" id="2_g4qp5"]
+[ext_resource type="Resource" uid="uid://lt2ee88dhv2b" path="res://data/cell_type/classic_cell.tres" id="2_kmekc"]
 [ext_resource type="Material" uid="uid://c20of8ktqtn3f" path="res://assets/shaders/outline_shader.tres" id="4_g4qp5"]
 [ext_resource type="Texture2D" uid="uid://b3h0c14fq3dy3" path="res://assets/art/icons/sword.png" id="5_kmekc"]
 
@@ -17,6 +18,7 @@ font_size = 28
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_g4qp5")
+cell_type = ExtResource("2_kmekc")
 
 [node name="CellSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

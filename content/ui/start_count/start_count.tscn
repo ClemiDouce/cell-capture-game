@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdb3bqxrywc4q"]
+
+[ext_resource type="Script" uid="uid://bhc3pma3inaok" path="res://content/ui/start_count/start_count.gd" id="1_cs3gj"]
+[ext_resource type="LabelSettings" uid="uid://ceowidd61f441" path="res://assets/font/label_settings/big_pixel.tres" id="2_nj8s7"]
+
+[node name="StartCount" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cs3gj")
+
+[node name="CenterLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = ExtResource("2_nj8s7")
