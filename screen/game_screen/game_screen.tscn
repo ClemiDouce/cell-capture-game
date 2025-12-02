@@ -1,11 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c63y7n8w5c5nr"]
+[gd_scene load_steps=9 format=3 uid="uid://c63y7n8w5c5nr"]
 
 [ext_resource type="Script" uid="uid://c08s6hcsu5j0g" path="res://screen/game_screen/game_screen.gd" id="1_8gjw2"]
-[ext_resource type="PackedScene" uid="uid://x33lho3e47ha" path="res://content/cell/base_cell.tscn" id="1_ul44q"]
-[ext_resource type="Texture2D" uid="uid://bv1aqad8y8iex" path="res://assets/art/background/Starfield_02-1024x1024.png" id="2_6cdt5"]
-[ext_resource type="Resource" uid="uid://dlqncuk3kekwn" path="res://data/cell_type/strength_cell.tres" id="4_nwk7e"]
-[ext_resource type="Resource" uid="uid://bw1oo8mdy7ora" path="res://data/cell_type/factory_cell.tres" id="4_urxse"]
-[ext_resource type="Resource" uid="uid://bycevfg2ro00q" path="res://data/cell_type/speed_cell.tres" id="5_03bka"]
+[ext_resource type="PackedScene" uid="uid://byc12ueamsfim" path="res://content/map/level_map.tscn" id="2_j56h3"]
 [ext_resource type="Script" uid="uid://bi2dngrd2avmw" path="res://content/ai/player/player_logic.gd" id="8_2nipe"]
 [ext_resource type="Script" uid="uid://nmuyr83dsmsx" path="res://content/ai/opponent/aggressiv_ai.gd" id="8_rk31o"]
 [ext_resource type="LabelSettings" uid="uid://ceowidd61f441" path="res://assets/font/label_settings/big_pixel.tres" id="9_rk31o"]
@@ -15,55 +11,14 @@
 [sub_resource type="LabelSettings" id="LabelSettings_v4tbp"]
 font = ExtResource("10_jtum3")
 font_size = 64
-outline_size = 32
+outline_size = 28
 outline_color = Color(0, 0, 0, 1)
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_8gjw2")
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -1
-texture_filter = 1
-scale = Vector2(1.8750001, 1.8750001)
-texture = ExtResource("2_6cdt5")
-centered = false
-metadata/_edit_lock_ = true
-
-[node name="CellContainer" type="Node2D" parent="."]
+[node name="CellContainer" parent="." instance=ExtResource("2_j56h3")]
 unique_name_in_owner = true
-
-[node name="BaseCell" parent="CellContainer" instance=ExtResource("1_ul44q")]
-position = Vector2(742, 962)
-cell_type = ExtResource("4_nwk7e")
-
-[node name="BaseCell7" parent="CellContainer" instance=ExtResource("1_ul44q")]
-position = Vector2(110, 616)
-cell_type = ExtResource("5_03bka")
-
-[node name="BaseCell8" parent="CellContainer" instance=ExtResource("1_ul44q")]
-position = Vector2(373, 209)
-cell_type = ExtResource("4_urxse")
-
-[node name="BaseCell6" parent="CellContainer" instance=ExtResource("1_ul44q")]
-position = Vector2(1097, 222)
-cell_type = ExtResource("4_nwk7e")
-
-[node name="BaseCell2" parent="CellContainer" instance=ExtResource("1_ul44q")]
-position = Vector2(1149, 721)
-initial_unit_count = 50
-team = 1
-
-[node name="BaseCell4" parent="CellContainer" instance=ExtResource("1_ul44q")]
-position = Vector2(741, 337)
-initial_unit_count = 50
-team = 0
-
-[node name="BaseCell5" parent="CellContainer" instance=ExtResource("1_ul44q")]
-position = Vector2(1779, 660)
-
-[node name="BaseCell3" parent="CellContainer" instance=ExtResource("1_ul44q")]
-position = Vector2(1451, 914)
-cell_type = ExtResource("4_urxse")
 
 [node name="PlayerLogic" type="Node2D" parent="."]
 script = ExtResource("8_2nipe")
@@ -76,6 +31,7 @@ metadata/_custom_type_script = "uid://nmuyr83dsmsx"
 
 [node name="InputStopper" type="Control" parent="UI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,36 +40,54 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EndMessage" type="CenterContainer" parent="UI"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/EndMessage"]
+[node name="EndTextBox" type="VBoxContainer" parent="UI/EndMessage"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="UI/EndMessage/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="UI/EndMessage/EndTextBox"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Humanity is Doomed"
 label_settings = ExtResource("9_rk31o")
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="UI/EndMessage/VBoxContainer"]
+[node name="SubtitleLabel" type="Label" parent="UI/EndMessage/EndTextBox"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "You Loose"
 label_settings = ExtResource("9_rk31o")
 horizontal_alignment = 1
 
-[node name="RetryText" type="Label" parent="UI/EndMessage/VBoxContainer"]
+[node name="RetryText" type="Label" parent="UI/EndMessage/EndTextBox"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "press space to retry"
 label_settings = SubResource("LabelSettings_v4tbp")
 horizontal_alignment = 1
 
+[node name="StartGameContainer" type="VBoxContainer" parent="UI/EndMessage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="UI/EndMessage/StartGameContainer"]
+layout_mode = 2
+text = "SOLAR BUSTER"
+label_settings = ExtResource("9_rk31o")
+
+[node name="StartText" type="Label" parent="UI/EndMessage/StartGameContainer"]
+layout_mode = 2
+text = "press space to play"
+label_settings = SubResource("LabelSettings_v4tbp")
+horizontal_alignment = 1
+
 [node name="StartCount" parent="UI" instance=ExtResource("11_vjy8y")]
 unique_name_in_owner = true
+visible = false
+mouse_filter = 1

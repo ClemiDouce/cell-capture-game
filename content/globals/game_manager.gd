@@ -8,4 +8,10 @@ signal planet_captured(cell: BaseCell)
 signal game_started
 signal game_finished(winner : Enums.Team)
 
+enum GameState {
+	MAIN,
+	GAME,
+	END
+}
+
 var current_game_scene : GameScreen

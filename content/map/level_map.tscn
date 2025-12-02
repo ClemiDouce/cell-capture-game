@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://byc12ueamsfim"]
+
+[ext_resource type="Texture2D" uid="uid://bv1aqad8y8iex" path="res://assets/art/background/Starfield_02-1024x1024.png" id="1_i34jj"]
+[ext_resource type="Script" uid="uid://rj6hxfhqyyia" path="res://content/map/base_map.gd" id="1_nia5b"]
+[ext_resource type="PackedScene" uid="uid://x33lho3e47ha" path="res://content/cell/base_cell.tscn" id="1_s74ca"]
+[ext_resource type="Resource" uid="uid://dlqncuk3kekwn" path="res://data/cell_type/strength_cell.tres" id="2_i34jj"]
+[ext_resource type="Resource" uid="uid://bycevfg2ro00q" path="res://data/cell_type/speed_cell.tres" id="3_nia5b"]
+[ext_resource type="Resource" uid="uid://bw1oo8mdy7ora" path="res://data/cell_type/factory_cell.tres" id="4_dhkly"]
+
+[node name="CellContainer" type="Node2D"]
+script = ExtResource("1_nia5b")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+scale = Vector2(1.8750001, 1.8750001)
+texture = ExtResource("1_i34jj")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="PlanetsContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="BaseCell" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
+position = Vector2(742, 962)
+cell_type = ExtResource("2_i34jj")
+
+[node name="BaseCell7" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
+position = Vector2(110, 616)
+cell_type = ExtResource("3_nia5b")
+
+[node name="BaseCell8" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
+position = Vector2(373, 209)
+cell_type = ExtResource("4_dhkly")
+
+[node name="BaseCell6" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
+position = Vector2(1097, 222)
+cell_type = ExtResource("2_i34jj")
+
+[node name="BaseCell2" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
+position = Vector2(1149, 721)
+initial_unit_count = 50
+team = 1
+
+[node name="BaseCell4" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
+position = Vector2(741, 337)
+initial_unit_count = 50
+team = 0
+
+[node name="BaseCell5" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
+position = Vector2(1779, 660)
+
+[node name="BaseCell3" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
+position = Vector2(1451, 914)
+cell_type = ExtResource("4_dhkly")

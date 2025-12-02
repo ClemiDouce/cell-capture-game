@@ -1,8 +1,8 @@
 class_name RandomAI extends BaseAI
 
 func pick_target():
-	var hostile_cells = get_ally_planets()
-	var ally_cells = Game.current_game_scene.cell_list.filter(sort_ally)
+	var hostile_cells = get_player_planets()
+	var ally_cells = Game.current_game_scene.cell_list.filter(sort_player)
 	
 	
 	var target = hostile_cells.pick_random()
