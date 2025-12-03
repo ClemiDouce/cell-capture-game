@@ -17,7 +17,7 @@ outline_color = Color(0, 0, 0, 1)
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_8gjw2")
 
-[node name="CellContainer" parent="." instance=ExtResource("2_j56h3")]
+[node name="Map" parent="." instance=ExtResource("2_j56h3")]
 unique_name_in_owner = true
 
 [node name="PlayerLogic" type="Node2D" parent="."]
@@ -46,26 +46,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EndTextBox" type="VBoxContainer" parent="UI/EndMessage"]
+[node name="PlayerWinBox" type="VBoxContainer" parent="UI/EndMessage"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="UI/EndMessage/EndTextBox"]
+[node name="TitleLabel" type="Label" parent="UI/EndMessage/PlayerWinBox"]
+layout_mode = 2
+text = "Humanity is Saved"
+label_settings = ExtResource("9_rk31o")
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="UI/EndMessage/PlayerWinBox"]
+layout_mode = 2
+text = "You Win"
+label_settings = ExtResource("9_rk31o")
+horizontal_alignment = 1
+
+[node name="RetryText" type="Label" parent="UI/EndMessage/PlayerWinBox"]
+layout_mode = 2
+text = "press space to replay"
+label_settings = SubResource("LabelSettings_v4tbp")
+horizontal_alignment = 1
+
+[node name="PlayerLooseBox" type="VBoxContainer" parent="UI/EndMessage"]
 unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="UI/EndMessage/PlayerLooseBox"]
 layout_mode = 2
 text = "Humanity is Doomed"
 label_settings = ExtResource("9_rk31o")
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="UI/EndMessage/EndTextBox"]
-unique_name_in_owner = true
+[node name="SubtitleLabel" type="Label" parent="UI/EndMessage/PlayerLooseBox"]
 layout_mode = 2
 text = "You Loose"
 label_settings = ExtResource("9_rk31o")
 horizontal_alignment = 1
 
-[node name="RetryText" type="Label" parent="UI/EndMessage/EndTextBox"]
-unique_name_in_owner = true
+[node name="RetryText" type="Label" parent="UI/EndMessage/PlayerLooseBox"]
 layout_mode = 2
 text = "press space to retry"
 label_settings = SubResource("LabelSettings_v4tbp")

@@ -9,7 +9,7 @@ var playing := false
 
 func connect_signals():
 	Game.game_started.connect(func(): playing = true)
-	Game.game_finished.connect(func(): playing = false)
+	Game.game_finished.connect(func(winner): playing = false)
 
 func _ready() -> void:
 	connect_signals()

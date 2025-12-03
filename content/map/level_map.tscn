@@ -49,6 +49,7 @@ team = 0
 
 [node name="BaseCell5" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
 position = Vector2(1779, 660)
+cell_type = ExtResource("3_nia5b")
 
 [node name="BaseCell3" parent="PlanetsContainer" instance=ExtResource("1_s74ca")]
 position = Vector2(1451, 914)

@@ -74,6 +74,7 @@ func apply_attack(_team: Enums.Team, value: int):
 		if unit_count < 0:
 			unit_count = abs(unit_count)
 			set_team(_team)
+			Game.planet_captured.emit(self)
 
 func get_attack_data(target: BaseCell, pourcent: float = 50.):
 	var direction = self.global_position.direction_to(target.global_position)
