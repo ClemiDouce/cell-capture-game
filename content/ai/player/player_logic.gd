@@ -1,11 +1,11 @@
-extends Node2D
+class_name PlayerLogic extends Node2D
 
 var selected_ally_cell : Array[BaseCell]
 var last_target : BaseCell
 var cell_hovered : BaseCell
 
 var point_param : PhysicsPointQueryParameters2D
-var playing := false
+@export var playing := true
 
 func connect_signals():
 	Game.game_started.connect(func(): playing = true)

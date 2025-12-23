@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bphm3wyo54ao7"]
+[gd_scene load_steps=6 format=3 uid="uid://bphm3wyo54ao7"]
 
 [ext_resource type="Script" uid="uid://ckjwuclu4wdw8" path="res://content/spaceships/space_ship.gd" id="1_kesne"]
 [ext_resource type="Texture2D" uid="uid://dbremmusely42" path="res://assets/art/ships/ship_0000.png" id="2_s7j5m"]
 [ext_resource type="Texture2D" uid="uid://bbiriyofxsilw" path="res://assets/art/ships/ship_0001.png" id="3_b23hj"]
 [ext_resource type="Script" uid="uid://ie3tbml6fghh" path="res://content/component/sine_component.gd" id="3_hfwed"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7j5m"]
+radius = 18.027756
 
 [node name="SpaceShip" type="Node2D"]
 script = ExtResource("1_kesne")
@@ -22,3 +25,12 @@ script = ExtResource("3_hfwed")
 target = NodePath("../ShipTexture")
 frequency = 1.5
 amplitude = 10.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_s7j5m")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

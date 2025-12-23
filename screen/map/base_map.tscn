@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cauf7scsqnu50"]
+
+[ext_resource type="Script" uid="uid://qvjnbepefhbb" path="res://screen/map/base_map.gd" id="1_um60h"]
+[ext_resource type="Script" uid="uid://bi2dngrd2avmw" path="res://content/ai/player/player_logic.gd" id="2_6dc0h"]
+
+[node name="BaseMap" type="Node2D"]
+script = ExtResource("1_um60h")
+
+[node name="PlayerLogic" type="Node2D" parent="."]
+script = ExtResource("2_6dc0h")
+metadata/_custom_type_script = "uid://bi2dngrd2avmw"

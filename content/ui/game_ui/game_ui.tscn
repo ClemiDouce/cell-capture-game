@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2tk3ximb835j"]
+
+[ext_resource type="LabelSettings" uid="uid://ceowidd61f441" path="res://assets/font/label_settings/big_pixel.tres" id="1_nmcqr"]
+[ext_resource type="FontFile" uid="uid://bv4ujlqmxncsa" path="res://assets/font/Extra_Thick.ttf" id="2_4y56h"]
+[ext_resource type="PackedScene" uid="uid://cdb3bqxrywc4q" path="res://content/ui/start_count/start_count.tscn" id="3_l0gao"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v4tbp"]
+font = ExtResource("2_4y56h")
+font_size = 64
+outline_size = 28
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="InputStopper" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndMessage" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerWinBox" type="VBoxContainer" parent="EndMessage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="EndMessage/PlayerWinBox"]
+layout_mode = 2
+text = "Humanity is Saved"
+label_settings = ExtResource("1_nmcqr")
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="EndMessage/PlayerWinBox"]
+layout_mode = 2
+text = "You Win"
+label_settings = ExtResource("1_nmcqr")
+horizontal_alignment = 1
+
+[node name="RetryText" type="Label" parent="EndMessage/PlayerWinBox"]
+layout_mode = 2
+text = "press space to replay"
+label_settings = SubResource("LabelSettings_v4tbp")
+horizontal_alignment = 1
+
+[node name="PlayerLooseBox" type="VBoxContainer" parent="EndMessage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="EndMessage/PlayerLooseBox"]
+layout_mode = 2
+text = "Humanity is Doomed"
+label_settings = ExtResource("1_nmcqr")
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="EndMessage/PlayerLooseBox"]
+layout_mode = 2
+text = "You Loose"
+label_settings = ExtResource("1_nmcqr")
+horizontal_alignment = 1
+
+[node name="RetryText" type="Label" parent="EndMessage/PlayerLooseBox"]
+layout_mode = 2
+text = "press space to retry"
+label_settings = SubResource("LabelSettings_v4tbp")
+horizontal_alignment = 1
+
+[node name="StartGameContainer" type="VBoxContainer" parent="EndMessage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="EndMessage/StartGameContainer"]
+layout_mode = 2
+text = "SOLAR BUSTER"
+label_settings = ExtResource("1_nmcqr")
+
+[node name="StartText" type="Label" parent="EndMessage/StartGameContainer"]
+layout_mode = 2
+text = "press space to play"
+label_settings = SubResource("LabelSettings_v4tbp")
+horizontal_alignment = 1
+
+[node name="StartCount" parent="." instance=ExtResource("3_l0gao")]
+unique_name_in_owner = true
+visible = false
+mouse_filter = 1

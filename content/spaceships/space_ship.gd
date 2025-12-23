@@ -5,6 +5,7 @@ class_name SpaceShip extends Node2D
 
 @onready var sine_component: SineComponent = $SineComponent
 @onready var ship_texture: Sprite2D = %ShipTexture
+@onready var detection_area: Area2D = $Area2D
 
 var attack_data: AttackData
 var launched := false
@@ -38,17 +39,26 @@ func _process(delta: float) -> void:
 	if launched:
 		self.global_position = self.global_position.move_toward(attack_data.target.global_position, delta * speed)
 		self.look_at(attack_data.target.global_position)
-		if self.global_position.distance_to(attack_data.target.global_position) <= 80:
-			launched = false
-			land_ship(attack_data.target.global_position)
 
-func land_ship(target_pos: Vector2):
+func land_ship(target_planet: BaseCell):
 	var offset = Vector2(
 		randf_range(-spawn_offset, spawn_offset),
 		randf_range(-spawn_offset, spawn_offset)
 	)
 	var land_tween = create_tween().set_parallel()
-	land_tween.tween_property(self, "global_position", target_pos + offset, 1)
+	land_tween.tween_property(self, "global_position", target_planet.global_position + offset, 1)
 	land_tween.tween_property(self, "scale", Vector2.ZERO, 1)
 	await land_tween.finished
-	attack_data.target.apply_attack(attack_data.team, damage)
+	target_planet.apply_attack(attack_data.team, damage)
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if !launched:
+		return
+	if area is BaseCell:
+		if area == self.attack_data.target:
+			launched = false
+			land_ship(area)
+		elif area.cell_type.type_name == "defense" and area.team != attack_data.team:
+			launched = false
+			land_ship(area)

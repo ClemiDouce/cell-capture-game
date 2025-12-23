@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_yvbxp")
+type_name = "speed"
 cell_texture = ExtResource("1_ypjdu")
 production_speed_modifier = 1.2
 speed_modifier = 1.5

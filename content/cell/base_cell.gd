@@ -7,7 +7,7 @@ class_name BaseCell extends Area2D
 const SPACE_SHIP = preload("uid://bphm3wyo54ao7")
 const EXPLOSION_EFFECT = preload("uid://bvxeobvnj5c3f")
 
-
+@export var debug_mode := false
 @export var initial_unit_count := 0
 @export_category("Team")
 @export var team : Enums.Team = Enums.Team.NEUTRAL
@@ -63,6 +63,7 @@ func generate_unit(delta: float):
 		unit_count += unit_generation
 
 func apply_attack(_team: Enums.Team, value: int):
+	print("Damage received : " + str(value))
 	if _team == team:
 		unit_count += 1
 	else:
@@ -100,6 +101,8 @@ func launch_ships(data: AttackData):
 
 # Setter / Getter
 func set_unit_count(new_value: int):
+	if debug_mode :
+		print(new_value)
 	unit_count = new_value
 	unit_count_label.text = str(unit_count)
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo0borhh5ccdx"]
+
+[ext_resource type="PackedScene" uid="uid://byc12ueamsfim" path="res://content/map/base_planet_layout.tscn" id="1_3ijxn"]
+[ext_resource type="PackedScene" uid="uid://x33lho3e47ha" path="res://content/cell/base_cell.tscn" id="2_l0e70"]
+[ext_resource type="Resource" uid="uid://43siqfo0qktl" path="res://data/cell_type/defense_cell.tres" id="3_l0e70"]
+
+[node name="TestPlanetLayout" instance=ExtResource("1_3ijxn")]
+
+[node name="BaseCell" parent="PlanetsContainer" index="0" instance=ExtResource("2_l0e70")]
+position = Vector2(208, 189)
+team = 0
+
+[node name="BaseCell2" parent="PlanetsContainer" index="1" instance=ExtResource("2_l0e70")]
+position = Vector2(1696, 200)
+team = 1
+
+[node name="BaseCell3" parent="PlanetsContainer" index="2" instance=ExtResource("2_l0e70")]
+position = Vector2(1306, 774)
+
+[node name="BaseCell4" parent="PlanetsContainer" index="3" instance=ExtResource("2_l0e70")]
+position = Vector2(974, 210)
+debug_mode = true
+cell_type = ExtResource("3_l0e70")
+
+[node name="BaseCell5" parent="PlanetsContainer" index="4" instance=ExtResource("2_l0e70")]
+position = Vector2(513, 736)

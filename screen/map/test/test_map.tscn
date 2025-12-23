@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdgh5niyoxtw3"]
+
+[ext_resource type="PackedScene" uid="uid://cauf7scsqnu50" path="res://screen/map/base_map.tscn" id="1_tji06"]
+[ext_resource type="PackedScene" uid="uid://bo0borhh5ccdx" path="res://content/map/test_layout/test_planet_layout.tscn" id="2_j0tok"]
+
+[node name="TestMap" node_paths=PackedStringArray("map") instance=ExtResource("1_tji06")]
+map = NodePath("TestPlanetLayout")
+
+[node name="TestPlanetLayout" parent="." index="0" instance=ExtResource("2_j0tok")]

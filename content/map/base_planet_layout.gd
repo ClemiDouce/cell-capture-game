@@ -1,4 +1,4 @@
-class_name BaseMap extends Node2D
+class_name PlanetLayout extends Node2D
 
 @onready var planets_container: Node2D = %PlanetsContainer
 var planets : Array[BaseCell] = []

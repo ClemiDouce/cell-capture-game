@@ -4,6 +4,5 @@
 
 [resource]
 script = ExtResource("1_76prd")
-generation_bonus = 1
-strength_bonus = 1
+type_name = "classic"
 metadata/_custom_type_script = "uid://df7ph7v6reuxt"

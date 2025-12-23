@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl4uee0shv8a1"]
+
+[ext_resource type="PackedScene" uid="uid://byc12ueamsfim" path="res://content/map/base_planet_layout.tscn" id="1_0fmex"]
+[ext_resource type="PackedScene" uid="uid://x33lho3e47ha" path="res://content/cell/base_cell.tscn" id="3_yvphe"]
+[ext_resource type="Resource" uid="uid://dlqncuk3kekwn" path="res://data/cell_type/strength_cell.tres" id="4_7werl"]
+[ext_resource type="Resource" uid="uid://bycevfg2ro00q" path="res://data/cell_type/speed_cell.tres" id="5_8pvvc"]
+[ext_resource type="Resource" uid="uid://bw1oo8mdy7ora" path="res://data/cell_type/factory_cell.tres" id="6_qeyvl"]
+
+[node name="BasePlanetLayout" instance=ExtResource("1_0fmex")]
+
+[node name="BaseCell" parent="PlanetsContainer" index="0" instance=ExtResource("3_yvphe")]
+position = Vector2(742, 962)
+cell_type = ExtResource("4_7werl")
+
+[node name="BaseCell7" parent="PlanetsContainer" index="1" instance=ExtResource("3_yvphe")]
+position = Vector2(110, 616)
+cell_type = ExtResource("5_8pvvc")
+
+[node name="BaseCell8" parent="PlanetsContainer" index="2" instance=ExtResource("3_yvphe")]
+position = Vector2(373, 209)
+cell_type = ExtResource("6_qeyvl")
+
+[node name="BaseCell6" parent="PlanetsContainer" index="3" instance=ExtResource("3_yvphe")]
+position = Vector2(1097, 222)
+cell_type = ExtResource("4_7werl")
+
+[node name="BaseCell2" parent="PlanetsContainer" index="4" instance=ExtResource("3_yvphe")]
+position = Vector2(1149, 721)
+initial_unit_count = 50
+team = 1
+
+[node name="BaseCell4" parent="PlanetsContainer" index="5" instance=ExtResource("3_yvphe")]
+position = Vector2(741, 337)
+initial_unit_count = 50
+team = 0
+
+[node name="BaseCell5" parent="PlanetsContainer" index="6" instance=ExtResource("3_yvphe")]
+position = Vector2(1779, 660)
+cell_type = ExtResource("5_8pvvc")
+
+[node name="BaseCell3" parent="PlanetsContainer" index="7" instance=ExtResource("3_yvphe")]
+position = Vector2(1451, 914)
+cell_type = ExtResource("6_qeyvl")

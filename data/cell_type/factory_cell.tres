@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_qlyqi")
+type_name = "factory"
 cell_texture = ExtResource("1_s7m18")
 production_speed_modifier = 0.5
 defense_modifier = 0.5

@@ -1,13 +1,11 @@
-class_name GameScreen extends Node2D
+class_name GameScreen extends BaseMap
 
-@onready var map: BaseMap = %Map
 @onready var start_count: StartCounter = %StartCount
 @onready var start_game_container: VBoxContainer = %StartGameContainer
 @onready var player_win_box: VBoxContainer = %PlayerWinBox
 @onready var player_loose_box: VBoxContainer = %PlayerLooseBox
 
 var state := Game.GameState.MAIN
-var cell_list : Array[BaseCell]
 
 func _ready() -> void:
 	Game.current_game_scene = self

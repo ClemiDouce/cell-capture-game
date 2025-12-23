@@ -14,4 +14,4 @@ enum GameState {
 	END
 }
 
-var current_game_scene : GameScreen
+var current_game_scene : BaseMap

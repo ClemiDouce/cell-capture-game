@@ -8,10 +8,17 @@
 
 config_version=5
 
+[addons]
+
+quick_scenes/quick_run_shortcut=Object(Shortcut,"resource_local_to_scene":false,"resource_name":"Run Quick Scene","events":[Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194340,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+],"script":null)
+
+quick_scenes/selected_scene=0
+quick_scenes/scene_list=PackedStringArray("uid://bdgh5niyoxtw3")
+
 [application]
 
-config/name="TowerStrategyGame"
-run/main_scene="uid://c63y7n8w5c5nr"
+config/name="CellCaptureGame"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -30,6 +37,10 @@ gdscript/warnings/unused_signal=0
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/QuickSceneRunner/plugin.cfg")
 
 [file_customization]
 
@@ -52,6 +63,7 @@ left_click={
 [layer_names]
 
 2d_physics/layer_3="cell"
+2d_physics/layer_4="ship"
 
 [rendering]
 

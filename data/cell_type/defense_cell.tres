@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_8xa0q")
+type_name = "defense"
 cell_texture = ExtResource("1_xn050")
-production_speed_modifier = 0.0
 speed_modifier = 0.9
 defense_modifier = 1.5
 metadata/_custom_type_script = "uid://df7ph7v6reuxt"
